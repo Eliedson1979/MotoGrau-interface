@@ -31,7 +31,7 @@ WebFont.load({
       <If condition={gameStatus == GameStatus.IDLE}>
         <div className="w-full flex flex-col items-center justify-center color">
           <div className="w-44">
-          {/* FIXME: */}
+          
             <ProgressBar
               max={10}
               value={startTimeout}
