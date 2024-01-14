@@ -14,9 +14,46 @@
 
 .motograu-game .results-bar {
   background: linear-gradient(133deg,#00000017 0%,#1c101d 50%,#462948a2 100%)!important;
+  
 }
 
 .motograu-game .chat-container {
   background: linear-gradient(133deg,#000000 0%,#1c101d 50%,#462948 100%)!important
  }
- 
+
+ /* animação do display : ex o piloto tombou */
+ @keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+
+}
+
+.animated-text {
+  animation: blink 1s infinite;
+}
+
+/* minimapa */
+.minimapa {
+  position: fixed;
+  align-items: center; /* Se necessário para centralizar verticalmente */
+  top: 0; /* Pode ajustar conforme necessário */
+  margin-top: 0;
+  width: 100px;
+  height: 100px;
+  right: 0;
+  
+}
+/* altera a cor do saldo */
+.highlight {
+  color: #08da71; /* Cor do destaque (substitua pela cor desejada) */
+  font-weight: bold; /* Peso da fonte (pode ajustar conforme necessário) */
+  /* Adicione mais estilos conforme necessário */
+}
+

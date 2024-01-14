@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import CrashForm from './crash/form'
+// fim uma alteração so no caminho do arquivo
+import CrashForm from '../../../games/motograu/components/form/form'
 import If from '@/core/components/conditions/if'
 
 type Props = {

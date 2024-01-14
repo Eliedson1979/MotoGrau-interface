@@ -5,6 +5,9 @@ import { UserIcon } from '@heroicons/react/24/outline'
 import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
 import Header from '../lists/bets/header'
 
+// importação da fonte google
+import WebFont from 'webfontloader';
+
 export default function BetsTab() {
   const { registeredBets, getRegisteredBets } =
     useContext(CrashGameContext)
@@ -21,6 +24,12 @@ export default function BetsTab() {
   useEffect(() => {
     getRegisteredBets()
   }, [])
+  
+  WebFont.load({
+    google: {
+      families: ['Lemon: 400,700']  // Substitua 'Nome da Fonte' pela fonte desejada
+    }
+  });
 
   return (
     <div className="flex flex-col flex-1">
@@ -49,7 +58,7 @@ export default function BetsTab() {
           </If>
         </button>
       </section> */}
-
+      
       <section className="py-3  w-full">
         <div className="flex justify-between rounded bg-opacity-25 items-center ">
           <div className="flex items-center gap-1">
@@ -57,14 +66,16 @@ export default function BetsTab() {
             <div className="text-sm">{registeredBets.length}</div>
           </div>
 
-          <span className="text-sm">R$ {sum(registeredBets)}</span>
+          <span style={{ fontSize: '14px', color: '#08da71', fontFamily: 'sans-serif' }}>
+  R$ {sum(registeredBets)}
+</span>
         </div>
       </section>
 
       <Header />
-      <section className="h-full flex-shrink-1 flex-grow basis-0  overflow-y-scroll scrollbar-w-0 scrollbar-track-gray-400 scrollbar-thumb-gray-600 scrollbar scrollbar-track-rounded scrollbar-thumb-rounded">
-        <BetList items={registeredBets} />
-      </section>
+        <section style={{ fontFamily: 'Lemon' }} className="h-full flex-shrink-1 flex-grow basis-0 overflow-y-scroll scrollbar-w-0 scrollbar-track-gray-400 scrollbar-thumb-gray-600 scrollbar scrollbar-track-rounded scrollbar-thumb-rounded">
+         <BetList items={registeredBets} />
+        </section>
     </div>
   )
 }

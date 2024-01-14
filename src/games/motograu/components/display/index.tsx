@@ -61,6 +61,7 @@ export default function Display({ color }: Props) {
         >
           O piloto caiu!
         </h1>
+        
         <h1
           className={`text-6xl md:text-6xl lg:text-6xl font-bold text-red-600 drop-shadow`}
           style={{

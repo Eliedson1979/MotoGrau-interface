@@ -9,7 +9,7 @@ type Props = {
   openChatHandler?: Function
 }
 
-import If from '../conditions/if'
+import If from '../../../../core/components/conditions/if'
 
 import {
   QuestionMarkCircleIcon,
@@ -17,8 +17,8 @@ import {
   ChatBubbleLeftIcon,
 } from '@heroicons/react/24/outline'
 import { getGameLogo, getHowToPlay } from '@/core/helpers'
-import GameLimitsModal from '../provably-fair/game-limits'
-import { Chat } from '../chat'
+import GameLimitsModal from '../../../../core/components/provably-fair/game-limits'
+import { Chat } from '../../../../core/components/chat/index'
 
 export default function Navbar({
   game,
@@ -94,28 +94,34 @@ export default function Navbar({
     /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     )
-
+    
   return (
     <div className="">
       <div className="navbar mx-auto  my-auto sm:px-3 h-12 flex items-center w-full justify-end">
-        <h1 className="self-center">{getGameLogo(game)}</h1>
+        <div className='testando'>
+          <h1 className="self-center">{getGameLogo(game)}</h1>
+        </div>
 
         <div className="flex items-center ml-auto gap-2">
-          <button
-            onClick={() => {
-              setShowModal(!showModal)
-              soundClick()
-            }}
-            className="btn btn-sm py-1 px-2 flex items-center text-gray-500 btn-warning gap-1 rounded-md capitalize text-sm font-normal"
-          >
-            <QuestionMarkCircleIcon className="h-5 w-5" />
-            <span className="hidden sm:inline">Como Jogar?</span>
-          </button>
+        
+         {/* fiz algumas modificação no botão de instrução */}
+         <button
+           onClick={() => {
+            setShowModal(!showModal);
+            soundClick();
+          }}
+          className="btn btn-sm py-1 px-2 flex items-center text-gray-500 btn-warning gap-1 rounded-md capitalize text-sm font-normal hover:bg-yellow-500 focus:outline-none focus:ring focus:border-blue-300"
+       >
+          <QuestionMarkCircleIcon className="h-5 w-5" />
+          <span className="hidden sm:inline">Instruções do Jogo</span>
+        </button>
 
-          <div className="text-sm text-center font-bold mr-1">
-            <span className="player-currency">R$</span>{' '}
-            <span className="balance">{balance}</span>
-          </div>
+          {/* implementei uma palavra saldo */}
+        <div className="text-sm text-center font-bold mr-1">
+          <span className="player-currency">SALDO: R$</span>{' '}
+          <span className="balance highlight">{balance}</span>
+        </div>
+
 
           <div className="border-l h-6 border-gray-400 border-opacity-50"></div>
 
@@ -168,7 +174,7 @@ export default function Navbar({
                   <label className="label hover:font-bold cursor-pointer">
                     <span className="label-text text-xs opacity-90">
                       Música
-                    </span>
+                    </span>Bungee Spice
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"

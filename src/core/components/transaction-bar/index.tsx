@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import If from '@/core/components/conditions/if'
-import Tabs, { Tab } from '../tabs'
+import Tabs, { Tab } from '../../../games/motograu/components/tab/tabs' // alterei o caminho
 import BetsTab from './tabs/bets'
 import HistoryTab from './tabs/history'
 import BestTab from './tabs/best'

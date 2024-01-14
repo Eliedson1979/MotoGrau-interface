@@ -1,9 +1,10 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import Tabs from '../../../../games/motograu/components/tab/tabs' // alterei o caminho
+import Tabs from '../../../motograu/components/tab/tabs' // alterei o caminho
 import If from '@/core/components/conditions/if'
 import TextField from '@/core/components/text-field'
 import { GameStatus } from '@/core/providers/enums/game-status'
+
 
 import {
   formatCurrencyToNumber,
@@ -203,38 +204,33 @@ export default function CrashForm({
                   label="Valor"
                 />
               </div>
-
-              <div className="w-1/2">
-                <div className="grid gap-2 h-full grid-cols-2">
-                  <div className="col-span-1">
-                    <button
-                      onClick={divideAmount}
-                      type="button"
-                      disabled={
-                        transaction.status !=
-                        TransactionStatus.UNREGISTERED
-                      }
-                      className="btn btn-ghost min-h-0 flex-1 w-full h-full rounded text-xl font-normal disabled:bg-gray-700 disabled:bg-opacity-30 border-gray-700 border-opacity-40"
-                    >
-                      &frac12;
-                    </button>
-                  </div>
-
-                  <div className="col-span-1">
-                    <button
-                      onClick={doubleAmount}
-                      type="button"
-                      disabled={
-                        transaction.status !=
-                        TransactionStatus.UNREGISTERED
-                      }
-                      className="btn btn-ghost min-h-0 grow w-full h-full rounded capitalize text-normal font-normal disabled:bg-gray-700 disabled:bg-opacity-30 border-gray-700 border-opacity-40"
-                    >
-                      2x
-                    </button>
-                  </div>
+              {/* estilizei a opacidade do botões 1/2, 2x */}
+            <div className="w-1/2">
+              <div className="grid gap-2 h-full grid-cols-2">
+                <div className="col-span-1">
+                  <button
+                    onClick={divideAmount}
+                    type="button"
+                    disabled={transaction.status !== TransactionStatus.UNREGISTERED}
+                    className="btn btn-ghost min-h-0 flex-1 w-full h-full rounded text-xl font-normal disabled:bg-gray-700 disabled:bg-opacity-30 border-gray-700 border-opacity-40 transition duration-300 ease-in-out hover:bg-gray-600 hover:text-white"
+                  >
+                    &frac12;
+                  </button>
+                </div>
+            
+                <div className="col-span-1">
+                  <button
+                    onClick={doubleAmount}
+                    type="button"
+                    disabled={transaction.status !== TransactionStatus.UNREGISTERED}
+                    className="btn btn-ghost min-h-0 grow w-full h-full rounded capitalize text-normal font-normal disabled:bg-gray-700 disabled:bg-opacity-30 border-gray-700 border-opacity-40 transition duration-300 ease-in-out hover:bg-gray-600 hover:text-white"
+                  >
+                    2x
+                  </button>
                 </div>
               </div>
+            </div>
+
             </div>
 
             <div className="flex gap-2">
@@ -273,20 +269,26 @@ export default function CrashForm({
                 transaction?.status == TransactionStatus.UNREGISTERED
               }
             >
-              <button
-                className={`btn border-2 hover:border-gray-300 text-[22px] hover:text-[24px] rounded-[20px] border-gray-400 ${getBackgroundColor(
-                  color
-                )} flex flex-col px-0 text-white h-full w-full`}
-              >
-                <span className="text-sm font-normal text-white">
-                  {transaction.mode == TransactionMode.COMMON
-                    ? 'Apostar'
-                    : 'Aposta Auto'}
-                </span>
-                <span className="mt-[3px] font-normal text-shadow-sm">
-                  R$ {transaction.amount}
-                </span>
-              </button>
+            
+            {/* Adicione uma animação sutil ao passar o mouse no botão. */}
+          <button
+             className={`btn border-2 hover:border-gray-300 text-[22px] hover:text-[24px] rounded-full border-gray-400 ${getBackgroundColor(color)} flex flex-col px-0 text-white h-full w-full transition-transform transform-gpu hover:scale-105`}
+              style={{
+                padding: '10px',
+                background: 'linear-gradient(to right, #09ee14, #0509d3)',
+                boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+            <span className="text-sm font-normal text-white">
+              {transaction.mode == TransactionMode.COMMON
+                ? 'Aposta Normal'
+                : 'Aposta Automática'}
+            </span>
+            <span className="mt-[3px] font-normal text-shadow-sm">
+              R$ {transaction.amount}
+            </span>
+        </button>
+
             </If>
 
             <If
@@ -322,7 +324,7 @@ export default function CrashForm({
               }
             >
               <div className="flex flex-col w-full h-full">
-                <button
+              <button
                   className={`btn border-2 text-[22px] hover:text-[24px] bg-red-700 rounded-[20px] hover:bg-red-800 border-[#ffffff40] flex flex-col px-0 text-white h-full w-full`}
                   onClick={cancelFuterTransaction}
                 >

@@ -1,6 +1,6 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useRef, useState } from 'react'
-import Tabs from '@/core/components/tabs'
+import Tabs from '../../../motograu/components/tab/tabs' // alterei o caminho
 import If from '@/core/components/conditions/if'
 import TextField from '@/core/components/text-field'
 import store from '@/store'

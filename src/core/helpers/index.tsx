@@ -1,37 +1,30 @@
-import React from 'react'
+import React from 'react';
+import motograuLogo from '@/assets/logos/moto-grau.png';
+import wallStreetLogo from '@/assets/logos/wallStreetBull.png';
+import hypetechLogo from '@/assets/logos/hypetech.png'; // Assuming you have a hypetechLogo
 
-import motograuLogo from '@/assets/logos/moto-grau.png'
-import wallStreetLogo from '@/assets/logos/wallStreetBull.png'
+import motograuHTP from '@/games/motograu/components/HowToPlay/how-to-play';
+import wallStreetHTP from '@/games/wall-street/components/HowToPlay/how-to-play';
+import hypetechHTP from '@/core/components/provably-fair/how-to-play';
 
-import motograuHTP from '@/games/motograu/components/HowToPlay/how-to-play'
-import wallStreetHTP from '@/games/wall-street/components/HowToPlay/how-to-play'
+const gameLogos = {
+  motograu: motograuLogo,
+  'wall-street': wallStreetLogo,
+  default: hypetechLogo,
+};
 
-import hypetechHTP from '@/core/components/provably-fair/how-to-play'
+const howToPlayComponents = {
+  motograu: motograuHTP,
+  'wall-street': wallStreetHTP,
+  default: hypetechHTP,
+};
 
+export const getGameLogo = (gameName) => {
+  const logo = gameLogos[gameName] || gameLogos.default;
+  const logoClassName = gameName === 'motograu' ? 'h-8 w-16' : 'h-8 w-26';
+  return <img src={logo} className={logoClassName} alt="" />;
+};
 
-export const getGameLogo = (gameName: string) => {
-  switch (gameName) {
-    case 'motograu':
-      return <img src={motograuLogo} className="h-8 w-16" alt="" />
-
-    case 'wall-street':
-      return <img src={wallStreetLogo} className="h-8 w-26" alt="" />
-
-    default:
-      return <img src={hypetechLogo} className="h-8 w-26" alt="" />
-  }
-}
-
-
-export const getHowToPlay = (gameName: string) => {
-  switch (gameName) {
-    case 'motograu':
-      return motograuHTP
-
-    case 'wall-street':
-      return wallStreetHTP
-
-    default:
-      return hypetechHTP
-  }
-}
+export const getHowToPlay = (gameName) => {
+  return howToPlayComponents[gameName] || howToPlayComponents.default;
+};

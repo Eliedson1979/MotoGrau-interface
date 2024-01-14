@@ -39,7 +39,7 @@ function ProgressBar(props) {
   return (
     <div className="w-60 sm:w-96 bg-black relative bg-opacity-20 rounded-full">
       <div
-        className="bg-[#ff1e4c] flex items-center text-xs font-medium text-blue-100 leading-none rounded-full h-6"
+        className="bg-[#d60a33] flex items-center text-xs font-medium text-blue-100 leading-none rounded-full h-6"
         style={{
           width: percentage,
           transition: 'linear',
@@ -47,10 +47,10 @@ function ProgressBar(props) {
         }}
       ></div>
       <span className="top-1 left-[17%] sm:left-[30%] lg:left-[35%] uppercase absolute text-xs text-white font-bold">
-        Próxima rodada
+       CARREGANDO O JOGO
       </span>
     </div>
   )
 }
 
-export default ProgressBar
+export default ProgressBar;

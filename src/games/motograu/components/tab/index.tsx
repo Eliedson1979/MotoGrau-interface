@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 import If from '@/core/components/conditions/if'
-import Tabs, { Tab } from '@/core/components/tabs'
+import Tabs, { Tab } from '../tab/tabs' // alterei o caminho
 import BetsTab from '@/core/components/transaction-bar/tabs/bets'
 import Footer from '@/core/components/transaction-bar/footer'
 import HistoryTab from '@/core/components/transaction-bar/tabs/history'
-import BestTab from '@/core/components/transaction-bar/tabs/best'
+import BestTab from '@/core/components/transaction-bar/tabs/bests'
 
 type Props = {
   variant: string
